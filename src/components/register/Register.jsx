@@ -49,7 +49,7 @@ export default class Register extends Component {
 
   renderRedirect() {
     if (this.state.redirect) {
-      return <Redirect to="/profile" />;
+      return <Redirect to={{ pathname: "/profile/" + this.state.username }} />;
     }
   }
   render() {

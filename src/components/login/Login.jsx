@@ -48,6 +48,7 @@ export default class Login extends Component {
       return <Redirect to={{ pathname: "/profile/" + this.state.username }} />;
     }
   }
+
   render() {
     return (
       <>
