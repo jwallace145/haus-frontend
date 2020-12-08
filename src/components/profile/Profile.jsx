@@ -12,7 +12,7 @@ export default class Profile extends Component {
     super(props);
 
     this.state = {
-      username: "test_user1",
+      username: "jwallace145",
       songInput: false,
       likedSongs: true,
       songs: [],
@@ -58,9 +58,7 @@ export default class Profile extends Component {
     return (
       <>
         <Container>
-          <Row>
-            <h1>Profile {this.state.username}</h1>
-          </Row>
+          <h1>Profile {this.state.username}</h1>
         </Container>
         <Container>
           <Row>
