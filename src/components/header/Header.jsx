@@ -4,9 +4,28 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import FormControl from "react-bootstrap/FormControl";
 
 export default class Header extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      query: "",
+    };
+
+    this.handleClick = this.handleClick.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({ query: event.target.value });
+  }
+
+  handleClick(event) {
+    event.preventDefault();
+    console.log(this.state.query);
+  }
+
   render() {
     console.log(this.props.username);
     return (
@@ -18,10 +37,20 @@ export default class Header extends Component {
           <Nav.Link href="/login">Login</Nav.Link>
           <Nav.Link href="/register">Register</Nav.Link>
           <Nav.Link href={"/logout/" + this.props.username}>Logout</Nav.Link>
+          <Nav.Link href="/search">Search</Nav.Link>
         </Nav>
         <Form inline>
-          <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-          <Button variant="outline-light">Search</Button>
+          <Form.Group controlId="query">
+            <Form.Control
+              type="text"
+              placeholder="Song Search"
+              className="mr-sm-2"
+              onChange={this.handleChange}
+            />
+          </Form.Group>
+          <Button variant="outline-light" onClick={this.handleClick}>
+            Search
+          </Button>
         </Form>
       </Navbar>
     );

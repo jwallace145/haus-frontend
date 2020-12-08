@@ -9,6 +9,7 @@ import About from "./components/about/About";
 import Logout from "./components/logout/Logout";
 import "./App.css";
 import { Component } from "react";
+import Search from "./components/search/Search";
 
 export default class App extends Component {
   constructor(props) {
@@ -36,6 +37,7 @@ export default class App extends Component {
           <Route path='/about' component={About} />
           <Route path="/register" component={Register} />
           <Route path='/logout/:username' component={Logout} />
+          <Route path='/search' component={Search} />
         </Switch>
       </Router>
     );
