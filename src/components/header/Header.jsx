@@ -17,7 +17,7 @@ export default class Header extends Component {
           <Nav.Link href={"/profile/" + this.props.username}>Profile</Nav.Link>
           <Nav.Link href="/login">Login</Nav.Link>
           <Nav.Link href="/register">Register</Nav.Link>
-          <Nav.Link href="/logout">Logout</Nav.Link>
+          <Nav.Link href={"/logout/" + this.props.username}>Logout</Nav.Link>
         </Nav>
         <Form inline>
           <FormControl type="text" placeholder="Search" className="mr-sm-2" />

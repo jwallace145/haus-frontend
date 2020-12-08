@@ -12,7 +12,7 @@ export default class Logout extends Component {
       redirect: false,
     };
 
-    this.handleClick.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
@@ -20,12 +20,11 @@ export default class Logout extends Component {
   }
 
   handleClick() {
-    var username = this.state.username;
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        username: username,
+        username: this.state.username,
       }),
     };
 
@@ -47,7 +46,7 @@ export default class Logout extends Component {
       <>
         {this.renderRedirect()}
         <Container>
-          <h1>Logout</h1>
+          <h1>Logout {this.state.username}</h1>
         </Container>
         <Container>
           <Button variant="outline-dark" onClick={this.handleClick}>
