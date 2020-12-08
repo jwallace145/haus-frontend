@@ -32,6 +32,12 @@ export default class Profile extends Component {
   handleClick(event) {
     event.preventDefault();
 
+    fetch("http://127.0.0.1:5000/songs/" + this.state.username)
+      .then((response) => response.json())
+      .then((songsList) => {
+        this.setState({ songs: songsList["songs"] });
+      });
+
     if (event.target.value === "liked-songs") {
       this.setState({
         songInput: false,
