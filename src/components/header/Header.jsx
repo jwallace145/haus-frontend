@@ -5,6 +5,7 @@ import Nav from "react-bootstrap/Nav";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import FormControl from "react-bootstrap/FormControl";
+import Logout from "../logout/Logout";
 
 export default class Header extends Component {
   render() {
@@ -16,6 +17,7 @@ export default class Header extends Component {
           <Nav.Link href="/profile">Profile</Nav.Link>
           <Nav.Link href="/login">Login</Nav.Link>
           <Nav.Link href="/register">Register</Nav.Link>
+          <Nav.Link href="/logout">Logout</Nav.Link>
         </Nav>
         <Form inline>
           <FormControl type="text" placeholder="Search" className="mr-sm-2" />

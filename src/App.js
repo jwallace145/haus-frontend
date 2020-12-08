@@ -6,6 +6,7 @@ import Profile from "./components/profile/Profile";
 import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Home from "./components/home/Home";
 import About from "./components/about/About";
+import Logout from "./components/logout/Logout";
 
 function App() {
   return (
@@ -29,6 +30,9 @@ function App() {
         </Route>
         <Route path="/register">
           <Register />
+        </Route>
+        <Route path="/logout">
+          <Logout />
         </Route>
       </Switch>
     </Router>
