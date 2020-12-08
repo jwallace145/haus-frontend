@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Home from "./components/home/Home";
 import About from "./components/about/About";
 import Logout from "./components/logout/Logout";
+import "./App.css";
 
 function App() {
   return (

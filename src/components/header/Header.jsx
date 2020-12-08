@@ -5,7 +5,6 @@ import Nav from "react-bootstrap/Nav";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import FormControl from "react-bootstrap/FormControl";
-import Logout from "../logout/Logout";
 
 export default class Header extends Component {
   render() {
