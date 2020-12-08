@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./Login.css";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
 
 export default class Login extends Component {
   constructor(props) {
@@ -30,29 +31,34 @@ export default class Login extends Component {
 
   render() {
     return (
-      <div className="container">
-        <Form>
-          <Form.Group controlId="email">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control
-              type="email"
-              placeholder="Enter email"
-              onChange={this.handleChange}
-            />
-          </Form.Group>
-          <Form.Group controlId="password">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              type="password"
-              placeholder="Password"
-              onChange={this.handleChange}
-            />
-          </Form.Group>
-          <Button variant="dark" onClick={this.handleClick}>
-            Submit
-          </Button>
-        </Form>
-      </div>
+      <>
+        <Container>
+          <h1>Login</h1>
+        </Container>
+        <Container>
+          <Form>
+            <Form.Group controlId="email">
+              <Form.Label>Email address</Form.Label>
+              <Form.Control
+                type="email"
+                placeholder="Enter email"
+                onChange={this.handleChange}
+              />
+            </Form.Group>
+            <Form.Group controlId="password">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Password"
+                onChange={this.handleChange}
+              />
+            </Form.Group>
+            <Button variant="dark" onClick={this.handleClick}>
+              Submit
+            </Button>
+          </Form>
+        </Container>
+      </>
     );
   }
 }
