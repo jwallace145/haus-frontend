@@ -14,27 +14,13 @@ function App() {
     <Router>
       <Header />
       <Switch>
-        <Route path='/songintake'>
-          <SongIntake />
-        </Route>
-        <Route path='/login'>
-          <Login />
-        </Route>
-        <Route path='/profile'>
-          <Profile />
-        </Route>
-        <Route path='/home'>
-          <Home />
-        </Route>
-        <Route path='/about'>
-          <About />
-        </Route>
-        <Route path="/register">
-          <Register />
-        </Route>
-        <Route path="/logout">
-          <Logout />
-        </Route>
+        <Route path='/songintake' component={SongIntake} />
+        <Route path='/login' component={Login} />
+        <Route path='/profile/:username' component={Profile} />
+        <Route path='/home' component={Home} />
+        <Route path='/about' component={About} />
+        <Route path="/register" component={Register} />
+        <Route path="/logout" component={Logout} />
       </Switch>
     </Router>
   );

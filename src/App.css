@@ -4,3 +4,11 @@
   padding: 20px;
   margin-top: 20px;
 }
+
+.sidebar {
+  margin: 20px;
+  background-color: rgb(120, 120, 120);
+  padding: 20px;
+  border-radius: 20px;
+  display: block;
+}
