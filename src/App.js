@@ -20,7 +20,7 @@ function App() {
         <Route path='/home' component={Home} />
         <Route path='/about' component={About} />
         <Route path="/register" component={Register} />
-        <Route path="/logout" component={Logout} />
+        <Route path='/logout/:username' component={Logout} />
       </Switch>
     </Router>
   );
