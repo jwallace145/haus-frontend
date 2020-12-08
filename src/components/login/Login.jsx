@@ -1,16 +1,17 @@
 import React, { Component } from "react";
-import "./Login.css";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
+import Redirect from "react-router-dom/Redirect";
 
 export default class Login extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      email: "",
+      username: "",
       password: "",
+      redirect: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -18,8 +19,8 @@ export default class Login extends Component {
   }
 
   handleChange(event) {
-    if (event.target.id === "email") {
-      this.setState({ email: event.target.value });
+    if (event.target.id === "username") {
+      this.setState({ username: event.target.value });
     } else if (event.target.id === "password") {
       this.setState({ password: event.target.value });
     }
@@ -27,21 +28,41 @@ export default class Login extends Component {
 
   handleClick(event) {
     console.log(this.state);
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        username: this.state.username,
+        password: this.state.password,
+      }),
+    };
+
+    fetch("http://127.0.0.1:5000/login", requestOptions)
+      .then((response) => response.json())
+      .then((data) => console.log(data));
+
+    this.setState({ redirect: true });
   }
 
+  renderRedirect() {
+    if (this.state.redirect) {
+      return <Redirect to="/profile" />;
+    }
+  }
   render() {
     return (
       <>
+        {this.renderRedirect()}
         <Container>
           <h1>Login</h1>
         </Container>
         <Container>
           <Form>
-            <Form.Group controlId="email">
-              <Form.Label>Email address</Form.Label>
+            <Form.Group controlId="username">
+              <Form.Label>Username</Form.Label>
               <Form.Control
-                type="email"
-                placeholder="Enter email"
+                type="username"
+                placeholder="Enter username"
                 onChange={this.handleChange}
               />
             </Form.Group>
