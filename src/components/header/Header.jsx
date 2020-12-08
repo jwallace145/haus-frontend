@@ -8,12 +8,13 @@ import FormControl from "react-bootstrap/FormControl";
 
 export default class Header extends Component {
   render() {
+    console.log(this.props.username);
     return (
       <Navbar bg="dark" variant="dark">
         <Navbar.Brand href="/home"> HAUS </Navbar.Brand>
         <Nav className="mr-auto">
           <Nav.Link href="/about">About</Nav.Link>
-          <Nav.Link href="/profile">Profile</Nav.Link>
+          <Nav.Link href={"/profile/" + this.props.username}>Profile</Nav.Link>
           <Nav.Link href="/login">Login</Nav.Link>
           <Nav.Link href="/register">Register</Nav.Link>
           <Nav.Link href="/logout">Logout</Nav.Link>

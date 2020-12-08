@@ -41,11 +41,12 @@ export default class Login extends Component {
       .then((data) => console.log(data));
 
     this.setState({ redirect: true });
+    this.props.appCallBack(this.state.username);
   }
 
   renderRedirect() {
     if (this.state.redirect) {
-      return <Redirect to={{ pathname: "/profile/" + this.state.username }} />;
+      return <Redirect to={{ pathname: "/home" }} />;
     }
   }
 
