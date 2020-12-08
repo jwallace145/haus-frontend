@@ -12,7 +12,7 @@ export default class Profile extends Component {
     super(props);
 
     this.state = {
-      username: "jwallace145",
+      username: this.props.match.params.username,
       songInput: false,
       likedSongs: true,
       songs: [],

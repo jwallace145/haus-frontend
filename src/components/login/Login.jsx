@@ -27,7 +27,6 @@ export default class Login extends Component {
   }
 
   handleClick(event) {
-    console.log(this.state);
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -46,7 +45,7 @@ export default class Login extends Component {
 
   renderRedirect() {
     if (this.state.redirect) {
-      return <Redirect to="/profile" />;
+      return <Redirect to={{ pathname: "/profile/" + this.state.username }} />;
     }
   }
   render() {
