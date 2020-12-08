@@ -30,9 +30,17 @@ export default class Home extends Component {
         <Container>
           <Row>
             <Col>
-              {this.state.songs.map((song) => (
-                <Song title={song.title} artist={song.artist} />
-              ))}
+              <div className="sidebar">
+                {this.state.songs.map((song) => (
+                  <Song
+                    title={song.title}
+                    artist={song.artist}
+                    album={song.album}
+                    userid={song.userid}
+                    created_on={song.created_on}
+                  />
+                ))}
+              </div>
             </Col>
           </Row>
         </Container>

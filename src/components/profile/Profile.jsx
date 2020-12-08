@@ -54,10 +54,21 @@ export default class Profile extends Component {
   render() {
     let page;
     if (this.state.songInput) {
-      page = <SongIntake username={this.state.username} />;
+      page = (
+        <>
+          <h1>Song Input</h1>
+          <SongIntake username={this.state.username} />
+        </>
+      );
     } else if (this.state.likedSongs) {
       page = this.state.songs.map((song) => (
-        <Song title={song.title} artist={song.artist}></Song>
+        <Song
+          title={song.title}
+          artist={song.artist}
+          album={song.album}
+          userid={song.userid}
+          created_on={song.created_on}
+        ></Song>
       ));
     }
 
@@ -69,24 +80,28 @@ export default class Profile extends Component {
         <Container>
           <Row>
             <Col>
-              <ButtonGroup vertical>
-                <Button
-                  variant="dark"
-                  value="liked-songs"
-                  onClick={this.handleClick}
-                >
-                  Liked Songs
-                </Button>
-                <Button
-                  variant="dark"
-                  value="input-songs"
-                  onClick={this.handleClick}
-                >
-                  Input Song
-                </Button>
-              </ButtonGroup>
+              <div className="sidebar">
+                <ButtonGroup vertical>
+                  <Button
+                    variant="dark"
+                    value="liked-songs"
+                    onClick={this.handleClick}
+                  >
+                    Liked Songs
+                  </Button>
+                  <Button
+                    variant="dark"
+                    value="input-songs"
+                    onClick={this.handleClick}
+                  >
+                    Input Song
+                  </Button>
+                </ButtonGroup>
+              </div>
             </Col>
-            <Col xs={10}>{page}</Col>
+            <Col xs={10}>
+              <div className="sidebar">{page}</div>
+            </Col>
           </Row>
         </Container>
       </>
