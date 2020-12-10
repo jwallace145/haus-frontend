@@ -22,7 +22,7 @@ export default class Profile extends Component {
   }
 
   componentDidMount() {
-    fetch("http://127.0.0.1:5000/songs/" + this.state.username)
+    fetch("http://127.0.0.1:5000/songs?username=" + this.state.username)
       .then((response) => response.json())
       .then((songsList) => {
         this.setState({ songs: songsList["songs"] });
@@ -32,7 +32,7 @@ export default class Profile extends Component {
   handleClick(event) {
     event.preventDefault();
 
-    fetch("http://127.0.0.1:5000/songs/" + this.state.username)
+    fetch("http://127.0.0.1:5000/songs?username" + this.state.username)
       .then((response) => response.json())
       .then((songsList) => {
         this.setState({ songs: songsList["songs"] });
