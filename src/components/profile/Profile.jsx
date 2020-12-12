@@ -66,9 +66,8 @@ export default class Profile extends Component {
           title={song.title}
           artist={song.artist}
           album={song.album}
-          userid={song.userid}
           created_on={song.created_on}
-        ></Song>
+        />
       ));
     }
 
