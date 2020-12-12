@@ -62,7 +62,7 @@ export default class Home extends Component {
                           title={song.title}
                           artist={song.artist}
                           album={song.album}
-                          likes={song.count}
+                          likes={song.likes}
                           imgsrc={song.cover_url}
                           created_on={song.created_on}
                         />

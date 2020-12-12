@@ -25,6 +25,7 @@ export default class Profile extends Component {
     fetch("http://127.0.0.1:5000/songs?username=" + this.state.username)
       .then((response) => response.json())
       .then((songsList) => {
+        console.log(songsList["songs"]);
         this.setState({ songs: songsList["songs"] });
       });
   }
@@ -68,6 +69,7 @@ export default class Profile extends Component {
           album={song.album}
           created_on={song.created_on}
           imgsrc={song.cover_url}
+          likes={song.likes}
         />
       ));
     }
