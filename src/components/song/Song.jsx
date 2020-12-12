@@ -19,6 +19,9 @@ function Song(props) {
           <ListGroup.Item variant="dark">
             number of likes: {props.likes}
           </ListGroup.Item>
+          <ListGroup.Item variant="dark">
+            created on: {props.created_on}
+          </ListGroup.Item>
         </ListGroup>
       </Card.Body>
     </Card>

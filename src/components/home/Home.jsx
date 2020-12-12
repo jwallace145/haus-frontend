@@ -64,6 +64,7 @@ export default class Home extends Component {
                           album={song.album}
                           likes={song.count}
                           imgsrc={song.cover_url}
+                          created_on={song.created_on}
                         />
                       ))}
                     </div>
@@ -82,6 +83,8 @@ export default class Home extends Component {
                           artist={song.artist}
                           album={song.album}
                           likes={song.count}
+                          imgsrc={song.cover_url}
+                          created_on={song.created_on}
                         />
                       ))}
                     </div>

@@ -67,6 +67,7 @@ export default class Profile extends Component {
           artist={song.artist}
           album={song.album}
           created_on={song.created_on}
+          imgsrc={song.cover_url}
         />
       ));
     }
