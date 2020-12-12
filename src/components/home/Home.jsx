@@ -17,7 +17,7 @@ export default class Home extends Component {
     this.handleTabSelect = this.handleTabSelect.bind(this);
   }
   componentDidMount() {
-    fetch("http://127.0.0.1:5000/songs/most-liked")
+    fetch("http://127.0.0.1:5000/songs")
       .then((response) => response.json())
       .then((songsList) => {
         console.log(songsList["songs"]);
@@ -28,8 +28,21 @@ export default class Home extends Component {
   handleTabSelect(tab) {
     if (tab === "mostLiked") {
       console.log("MOST LIKED TAB SELECTED");
+      fetch("http://127.0.0.1:5000/songs/most-liked")
+        .then((response) => response.json())
+        .then((songsList) => {
+          console.log("HAHHAHAHA");
+          console.log(songsList["songs"]);
+          console.log(songsList["songs"][0]["count"]);
+          this.setState({ songs: songsList["songs"] });
+        });
     } else if (tab === "recentlyLiked") {
       console.log("RECENTLY LIKED TAB SELECTED");
+      fetch("http://127.0.0.1:5000/songs")
+        .then((response) => response.json())
+        .then((songsList) => {
+          this.setState({ songs: songsList["songs"] });
+        });
     }
   }
 
@@ -72,7 +85,7 @@ export default class Home extends Component {
                           title={song.title}
                           artist={song.artist}
                           album={song.album}
-                          created_on={song.created_on}
+                          likes={song.count}
                         />
                       ))}
                     </div>
