@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import S3 from "react-aws-s3";
 
 export default class SongIntake extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      id: "",
       title: "",
       album: "",
       artist: "",
@@ -44,7 +44,23 @@ export default class SongIntake extends Component {
 
     fetch("http://127.0.0.1:5000/songs?username=bob", requestOptions)
       .then((response) => response.json())
-      .then((data) => console.log(data));
+      .then((song) => {
+        console.log("song id: " + song["song"]["id"]);
+        this.setState({ id: song["song"]["id"] });
+
+        let formData = new FormData();
+
+        formData.append("song_cover", this.state.songfile);
+        formData.append("song_id", this.state.id);
+
+        let options = {
+          method: "POST",
+          body: formData,
+        };
+        fetch("http://127.0.0.1:5000/songs/upload-song-cover", options)
+          .then((response) => response.json())
+          .then((data) => console.log(data));
+      });
   }
 
   render() {
