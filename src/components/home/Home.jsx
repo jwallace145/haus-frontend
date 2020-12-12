@@ -27,17 +27,12 @@ export default class Home extends Component {
 
   handleTabSelect(tab) {
     if (tab === "mostLiked") {
-      console.log("MOST LIKED TAB SELECTED");
       fetch("http://127.0.0.1:5000/songs/most-liked")
         .then((response) => response.json())
         .then((songsList) => {
-          console.log("HAHHAHAHA");
-          console.log(songsList["songs"]);
-          console.log(songsList["songs"][0]["count"]);
           this.setState({ songs: songsList["songs"] });
         });
     } else if (tab === "recentlyLiked") {
-      console.log("RECENTLY LIKED TAB SELECTED");
       fetch("http://127.0.0.1:5000/songs")
         .then((response) => response.json())
         .then((songsList) => {
@@ -68,6 +63,7 @@ export default class Home extends Component {
                           artist={song.artist}
                           album={song.album}
                           likes={song.count}
+                          imgsrc={song.cover_url}
                         />
                       ))}
                     </div>

@@ -12,7 +12,7 @@ function Song(props) {
         </Card.Title>
         <Card.Subtitle>{props.album}</Card.Subtitle>
       </Card.Header>
-      <Card.Img className="photo" src="bbking.jpg" />
+      <Card.Img className="photo" src={props.imgsrc} />
       <Card.Body>
         <ListGroup variant="flush">
           <ListGroup.Item variant="dark">user: test user</ListGroup.Item>
