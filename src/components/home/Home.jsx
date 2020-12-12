@@ -59,6 +59,7 @@ export default class Home extends Component {
                     <div className="sidebar">
                       {this.state.songs.map((song) => (
                         <Song
+                          key={song.id}
                           title={song.title}
                           artist={song.artist}
                           album={song.album}
@@ -79,6 +80,7 @@ export default class Home extends Component {
                     <div className="sidebar">
                       {this.state.songs.map((song) => (
                         <Song
+                          key={song.id}
                           title={song.title}
                           artist={song.artist}
                           album={song.album}

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import S3 from "react-aws-s3";
 
 export default class SongIntake extends Component {
   constructor(props) {
@@ -10,6 +11,8 @@ export default class SongIntake extends Component {
       title: "",
       album: "",
       artist: "",
+      songfile: "",
+      songfilename: "",
     };
 
     this.handleClick = this.handleClick.bind(this);
@@ -39,10 +42,7 @@ export default class SongIntake extends Component {
       }),
     };
 
-    fetch(
-      "http://127.0.0.1:5000/songs?username=" + this.props.username,
-      requestOptions
-    )
+    fetch("http://127.0.0.1:5000/songs?username=bob", requestOptions)
       .then((response) => response.json())
       .then((data) => console.log(data));
   }
@@ -78,6 +78,17 @@ export default class SongIntake extends Component {
                 onChange={this.handleChange}
               />
               <Form.Text className="text-muted">Enter name of artist</Form.Text>
+            </Form.Group>
+            <Form.Group>
+              <Form.File
+                label="Album Cover"
+                onChange={(e) =>
+                  this.setState({
+                    songfile: e.target.files[0],
+                    songfilename: e.target.files[0].name,
+                  })
+                }
+              ></Form.File>
             </Form.Group>
             <Button variant="dark" onClick={this.handleClick}>
               Submit

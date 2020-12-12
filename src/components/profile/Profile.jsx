@@ -64,6 +64,7 @@ export default class Profile extends Component {
     } else if (this.state.likedSongs) {
       page = this.state.songs.map((song) => (
         <Song
+          key={song.id}
           title={song.title}
           artist={song.artist}
           album={song.album}
@@ -77,7 +78,8 @@ export default class Profile extends Component {
     return (
       <>
         <Container>
-          <h1>Profile {this.state.username}</h1>
+          <h1>{this.state.username}</h1>
+          <img src="https://jwalls-fun-bucket.s3.amazonaws.com/album-covers/led-zepplin-IV.jpg" />
         </Container>
         <Container>
           <Row>

@@ -15,7 +15,6 @@ function Song(props) {
       <Card.Img className="photo" src={props.imgsrc} />
       <Card.Body>
         <ListGroup variant="flush">
-          <ListGroup.Item variant="dark">user: test user</ListGroup.Item>
           <ListGroup.Item variant="dark">
             number of likes: {props.likes}
           </ListGroup.Item>
