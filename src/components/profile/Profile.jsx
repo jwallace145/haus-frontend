@@ -19,7 +19,7 @@ export default function Profile(props) {
         console.log(songsList["songs"]);
         setSongs(songsList["songs"]);
       });
-  });
+  }, []);
 
   function handleClick(event) {
     event.preventDefault();
