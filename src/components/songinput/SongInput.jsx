@@ -64,7 +64,7 @@ export default function SongIntake(props) {
             <Form.File
               label="Album Cover"
               onChange={(event) => setCover(event.target.files[0])}
-            ></Form.File>
+            />
           </Form.Group>
           <Button variant="dark" onClick={handleClick}>
             Submit
