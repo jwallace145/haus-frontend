@@ -9,8 +9,8 @@ export default function SongIntake(props) {
   const [album, setAlbum] = useState("");
   const [cover, setCover] = useState("");
 
-  function handleClick(e) {
-    e.preventDefault();
+  function handleClick(event) {
+    event.preventDefault();
 
     let formData = new FormData();
     formData.append("title", title);
@@ -39,7 +39,7 @@ export default function SongIntake(props) {
             <Form.Control
               type="title"
               placeholder="enter title"
-              onChange={(e) => setTitle(e.target.value)}
+              onChange={(event) => setTitle(event.target.value)}
             />
           </Form.Group>
           <Form.Group controlId="artist">
@@ -47,7 +47,7 @@ export default function SongIntake(props) {
             <Form.Control
               type="artist"
               placeholder="enter artist"
-              onChange={(e) => setArtist(e.target.value)}
+              onChange={(event) => setArtist(event.target.value)}
             />
           </Form.Group>
           <Form.Group controlId="album">
@@ -55,13 +55,13 @@ export default function SongIntake(props) {
             <Form.Control
               type="album"
               placeholder="enter album"
-              onChange={(e) => setAlbum(e.target.value)}
+              onChange={(event) => setAlbum(event.target.value)}
             />
           </Form.Group>
           <Form.Group>
             <Form.File
               label="Album Cover"
-              onChange={(e) => setCover(e.target.files[0])}
+              onChange={(event) => setCover(event.target.files[0])}
             ></Form.File>
           </Form.Group>
           <Button variant="dark" onClick={handleClick}>
