@@ -16,6 +16,7 @@ export default class Home extends Component {
 
     this.handleTabSelect = this.handleTabSelect.bind(this);
   }
+
   componentDidMount() {
     fetch("http://127.0.0.1:5000/songs")
       .then((response) => response.json())

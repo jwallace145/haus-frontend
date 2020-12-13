@@ -1,38 +1,22 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
-import Redirect from "react-router-dom/Redirect";
+import { useHistory } from "react-router-dom";
 
-export default class Login extends Component {
-  constructor(props) {
-    super(props);
+export default function Login(props) {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
-    this.state = {
-      username: "",
-      password: "",
-      redirect: false,
-    };
+  let history = useHistory();
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleChange(event) {
-    if (event.target.id === "username") {
-      this.setState({ username: event.target.value });
-    } else if (event.target.id === "password") {
-      this.setState({ password: event.target.value });
-    }
-  }
-
-  handleClick(event) {
+  function handleClick(event) {
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        username: this.state.username,
-        password: this.state.password,
+        username: username,
+        password: password,
       }),
     };
 
@@ -40,47 +24,41 @@ export default class Login extends Component {
       .then((response) => response.json())
       .then((data) => console.log(data));
 
-    this.setState({ redirect: true });
-    this.props.appCallBack(this.state.username);
+    history.push("/home");
   }
 
-  renderRedirect() {
-    if (this.state.redirect) {
-      return <Redirect to={{ pathname: "/home" }} />;
-    }
-  }
-
-  render() {
-    return (
-      <>
-        {this.renderRedirect()}
-        <Container>
-          <h1>Login</h1>
-        </Container>
-        <Container>
-          <Form>
-            <Form.Group controlId="username">
-              <Form.Label>Username</Form.Label>
-              <Form.Control
-                type="username"
-                placeholder="Enter username"
-                onChange={this.handleChange}
-              />
-            </Form.Group>
-            <Form.Group controlId="password">
-              <Form.Label>Password</Form.Label>
-              <Form.Control
-                type="password"
-                placeholder="Password"
-                onChange={this.handleChange}
-              />
-            </Form.Group>
-            <Button variant="dark" onClick={this.handleClick}>
-              Submit
-            </Button>
-          </Form>
-        </Container>
-      </>
-    );
-  }
+  return (
+    <>
+      <Container>
+        <h1>Login</h1>
+      </Container>
+      <Container>
+        <Form>
+          <Form.Group controlId="username">
+            <Form.Label>Username</Form.Label>
+            <Form.Control
+              type="username"
+              placeholder="Enter username"
+              onChange={(event) => {
+                setUsername(event.target.value);
+              }}
+            />
+          </Form.Group>
+          <Form.Group controlId="password">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              type="password"
+              placeholder="Password"
+              onChange={(event) => {
+                setPassword(event.target.value);
+              }}
+            />
+          </Form.Group>
+          <Button variant="dark" onClick={handleClick}>
+            Submit
+          </Button>
+        </Form>
+      </Container>
+    </>
+  );
 }

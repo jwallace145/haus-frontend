@@ -20,18 +20,13 @@ export default class App extends Component {
     }
   }
 
-  callBack = (data) => {
-    console.log('data: ' + data);
-    this.setState({username: data});
-  }
-
   render() {
     return (
       <Router>
         <Header username={this.state.username} />
         <Switch>
           <Route path='/songintake' component={SongIntake} />
-          <Route path='/login' component={() => <Login appCallBack={this.callBack}/>} />
+          <Route path='/login' component={Login} />
           <Route path='/profile/:username' component={Profile} />
           <Route path='/home' component={Home} />
           <Route path='/about' component={About} />
