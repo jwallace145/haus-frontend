@@ -1,0 +1,16 @@
+.avatar-img {
+  height: 200px;
+  border-radius: 50%;
+  border: 10px solid rgb(0, 0, 0);
+  width: 20%
+}
+
+.avatar-container {
+  display: inline-flex;
+  width: 100%
+}
+
+.user-details {
+  width: 80%;
+  text-transform: uppercase;
+}
