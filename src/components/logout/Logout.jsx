@@ -1,30 +1,17 @@
-import React, { Component } from "react";
+import React from "react";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
-import Redirect from "react-router-dom/Redirect";
+import { useHistory } from "react-router-dom";
 
-export default class Logout extends Component {
-  constructor(props) {
-    super(props);
+export default function Logout(props) {
+  let history = useHistory();
 
-    this.state = {
-      username: this.props.match.params.username,
-      redirect: false,
-    };
-
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  componentDidMount() {
-    console.log(this.state.username);
-  }
-
-  handleClick() {
+  function handleClick() {
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        username: this.state.username,
+        username: props.username,
       }),
     };
 
@@ -32,28 +19,19 @@ export default class Logout extends Component {
       .then((response) => response.json())
       .then((data) => console.log(data));
 
-    this.setState({ redirect: true });
+    history.push("/login");
   }
 
-  renderRedirect() {
-    if (this.state.redirect) {
-      return <Redirect to="/home" />;
-    }
-  }
-
-  render() {
-    return (
-      <>
-        {this.renderRedirect()}
-        <Container>
-          <h1>Logout {this.state.username}</h1>
-        </Container>
-        <Container>
-          <Button variant="outline-dark" onClick={this.handleClick}>
-            Log out
-          </Button>
-        </Container>
-      </>
-    );
-  }
+  return (
+    <>
+      <Container>
+        <h1>Logout {props.username}</h1>
+      </Container>
+      <Container>
+        <Button variant="outline-dark" onClick={handleClick}>
+          Log out
+        </Button>
+      </Container>
+    </>
+  );
 }
