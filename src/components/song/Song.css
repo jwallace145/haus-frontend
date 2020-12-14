@@ -1,0 +1,8 @@
+.song-metadata {
+    border-radius: 10px;
+    margin: 3px;
+}
+
+.song-card {
+    border: 10px solid rgb(120, 120, 120);
+}

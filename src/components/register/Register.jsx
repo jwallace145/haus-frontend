@@ -8,23 +8,25 @@ export default function Register(props) {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [avatar, setAvatar] = useState("");
 
   let history = useHistory();
 
   function handleClick(event) {
     event.preventDefault();
 
+    let formData = new FormData();
+    formData.append("username", username);
+    formData.append("email", email);
+    formData.append("password", password);
+    formData.append("avatar", avatar);
+
     const requestOptions = {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        username: username,
-        email: email,
-        password: password,
-      }),
+      body: formData,
     };
 
-    fetch("http://127.0.0.1:5000/user", requestOptions)
+    fetch("http://127.0.0.1:5000/users", requestOptions)
       .then((response) => response.json())
       .then((data) => console.log(data));
 
@@ -66,6 +68,10 @@ export default function Register(props) {
               onChange={(event) => {
                 setPassword(event.target.value);
               }}
+            />
+            <Form.File
+              label="Avatar"
+              onChange={(event) => setAvatar(event.target.files[0])}
             />
           </Form.Group>
           <Button variant="dark" onClick={handleClick}>

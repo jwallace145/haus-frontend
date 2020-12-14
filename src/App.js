@@ -1,7 +1,7 @@
 import Header from "./components/header/Header";
 import Login from "./components/login/Login";
 import Register from "./components/register/Register";
-import SongIntake from "./components/songintake/SongIntake";
+import SongInput from "./components/songinput/SongInput";
 import Profile from "./components/profile/Profile";
 import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Home from "./components/home/Home";
@@ -25,7 +25,7 @@ export default class App extends Component {
       <Router>
         <Header username={this.state.username} />
         <Switch>
-          <Route path='/songintake' component={SongIntake} />
+          <Route path='/songintake' component={SongInput} />
           <Route path='/login' component={Login} />
           <Route path='/profile/:username' component={Profile} />
           <Route path='/home' component={Home} />

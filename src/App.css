@@ -1,14 +1,21 @@
 .container {
   border-radius: 20px;
-  background-color: #f2f2f2;
+  background-color: rgb(240, 240, 240);
   padding: 20px;
   margin-top: 20px;
 }
 
 .sidebar {
   margin: 20px;
-  background-color: rgb(120, 120, 120);
+  background-color: rgb(240, 240, 240);
   padding: 20px;
   border-radius: 20px;
   display: block;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: auto;
+  grid-gap: 10px;
 }
