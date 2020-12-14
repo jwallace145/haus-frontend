@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import SongInput from "../songinput/SongInput";
 import Container from "react-bootstrap/Container";
-import Song from "../song/Song";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import Row from "react-bootstrap/Row";
@@ -24,7 +23,7 @@ export default function Profile(props) {
       .then((data) => {
         setSongs(data["songs"]);
       });
-  }, []);
+  }, [username]);
 
   function handleSelect(event) {
     setKey(event);
@@ -77,7 +76,7 @@ export default function Profile(props) {
           </Tab>
           <Tab eventKey="song-input" title="Song Input">
             <div className="sidebar">
-              <SongInput />
+              <SongInput username={username} />
             </div>
           </Tab>
         </Tabs>

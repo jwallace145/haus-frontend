@@ -24,7 +24,10 @@ export default function SongIntake(props) {
       body: formData,
     };
 
-    fetch("http://127.0.0.1:5000/songs?username=bob", requestOptions)
+    fetch(
+      "http://127.0.0.1:5000/songs?username=" + props.username,
+      requestOptions
+    )
       .then((response) => response.json())
       .then((song) => {
         console.log(song);

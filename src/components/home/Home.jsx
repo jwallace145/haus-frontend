@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Container from "react-bootstrap/Container";
-import Song from "../song/Song";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
-import Button from "react-bootstrap/Button";
 import "./Home.css";
 import SongBook from "../songbook/SongBook";
 

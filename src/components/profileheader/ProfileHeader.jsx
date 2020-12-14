@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Container from "react-bootstrap/Container";
 import "./ProfileHeader.css";
 
 export default function ProfileHeader(props) {
@@ -15,11 +14,11 @@ export default function ProfileHeader(props) {
         setAvatarUrl(data["avatar_url"]);
         setDateCreated(data["created_on"]);
       });
-  }, []);
+  }, [props.username]);
 
   return (
     <div className="avatar-container">
-      <img src={avatarUrl} className="avatar-img" />
+      <img src={avatarUrl} alt="user avatar" className="avatar-img" />
       <div className="user-details">
         <h1>{props.username}</h1>
         <h5>{email}</h5>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Song from "../song/Song";
 import "./SongBook.css";
 import Button from "react-bootstrap/Button";
@@ -15,7 +15,7 @@ export default function SongBook(props) {
             title={song.title}
             artist={song.artist}
             album={song.album}
-            likes={song.count}
+            likes={song.likes}
             imgsrc={song.cover_url}
             created_on={song.created_on}
           />
