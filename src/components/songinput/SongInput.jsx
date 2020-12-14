@@ -32,6 +32,8 @@ export default function SongIntake(props) {
       .then((song) => {
         console.log(song);
       });
+
+    props.alertCallBack();
   }
 
   return (
