@@ -9,7 +9,6 @@ export default function ProfileUpdate(props) {
   const [newUsername, setNewUsername] = useState("");
   const [newEmail, setNewEmail] = useState("");
   const [newAvatar, setNewAvatar] = useState("");
-  const [showProfileEdit, setShowProfileEdit] = useState(false);
 
   let history = useHistory();
 
@@ -34,11 +33,9 @@ export default function ProfileUpdate(props) {
     history.push("/profile/" + newUsername);
   }
 
-  let profileEdit;
-  if (showProfileEdit) {
-    profileEdit = (
-      <>
-        <hr></hr>
+  return (
+    <>
+      <div className="profile-edit">
         <h3>Profile Update</h3>
         <Form>
           <Form.Group controlId="username">
@@ -67,23 +64,7 @@ export default function ProfileUpdate(props) {
             Edit
           </Button>
         </Form>
-      </>
-    );
-  } else {
-    profileEdit = <div></div>;
-  }
-
-  return (
-    <div className="profile-edit">
-      <Button
-        variant="dark"
-        onClick={(event) => {
-          setShowProfileEdit(!showProfileEdit);
-        }}
-      >
-        Edit Profile
-      </Button>
-      {profileEdit}
-    </div>
+      </div>
+    </>
   );
 }

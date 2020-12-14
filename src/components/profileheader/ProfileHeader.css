@@ -11,6 +11,10 @@
 }
 
 .user-details {
+  margin: 15px;
+  border-radius: 20px;
+  padding: 15px;
+  background: rgb(200, 200, 200);
   width: 80%;
   text-transform: uppercase;
 }

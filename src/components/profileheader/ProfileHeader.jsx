@@ -20,7 +20,7 @@ export default function ProfileHeader(props) {
   return (
     <div className="avatar-container">
       <img src={avatarUrl} className="avatar-img" />
-      <div className="sidebar user-details">
+      <div className="user-details">
         <h1>{props.username}</h1>
         <h5>{email}</h5>
         <h5>{dateCreated}</h5>
