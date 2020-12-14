@@ -10,6 +10,7 @@ import ProfileHeader from "../profileheader/ProfileHeader";
 import ProfileUpdate from "../profileupdate/ProfileUpdate";
 import "./Profile.css";
 import Button from "react-bootstrap/Button";
+import SongBook from "../songbook/SongBook";
 
 export default function Profile(props) {
   const [username, setUsername] = useState(props.match.params.username);
@@ -69,22 +70,7 @@ export default function Profile(props) {
             <Container>
               <Row>
                 <Col>
-                  <div className="liked-songs">
-                    <h1>Liked Songs</h1>
-                    <div className="sidebar wrapper">
-                      {songs.map((song) => (
-                        <Song
-                          key={song.id}
-                          title={song.title}
-                          artist={song.artist}
-                          album={song.album}
-                          likes={song.likes}
-                          imgsrc={song.cover_url}
-                          created_on={song.created_on}
-                        />
-                      ))}
-                    </div>
-                  </div>
+                  <SongBook songs={songs} pageSize={6} />
                 </Col>
               </Row>
             </Container>
