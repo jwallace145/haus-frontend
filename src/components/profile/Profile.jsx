@@ -11,30 +11,27 @@ import "./Profile.css";
 import Button from "react-bootstrap/Button";
 import SongBook from "../songbook/SongBook";
 import Alert from "react-bootstrap/Alert";
+import axios from "axios";
 
 export default function Profile(props) {
   const [username, setUsername] = useState(props.match.params.username);
   const [songs, setSongs] = useState([]);
   const [key, setKey] = useState("liked-songs");
   const [showProfileEdit, setShowProfileEdit] = useState(false);
-  const [showAlert, setShowAlert] = useState(true);
+  const [showAlert, setShowAlert] = useState(false);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:5000/songs?username=" + username)
-      .then((response) => response.json())
-      .then((data) => {
-        setSongs(data["songs"]);
-      });
+    axios.get("/songs/liked-by?username=" + username).then((res) => {
+      setSongs(res.data["songs"]);
+    });
   }, [username]);
 
   function handleSelect(event) {
     setKey(event);
 
-    fetch("http://127.0.0.1:5000/songs?username=" + username)
-      .then((response) => response.json())
-      .then((data) => {
-        setSongs(data["songs"]);
-      });
+    axios.get("/songs/liked-by?username=" + username).then((res) => {
+      setSongs(res.data["songs"]);
+    });
   }
 
   function showAlertCallBack() {

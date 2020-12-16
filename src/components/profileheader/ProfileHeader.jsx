@@ -1,3 +1,4 @@
+import Axios from "axios";
 import React, { useEffect, useState } from "react";
 import "./ProfileHeader.css";
 
@@ -7,14 +8,12 @@ export default function ProfileHeader(props) {
   const [dateCreated, setDateCreated] = useState("");
 
   useEffect(() => {
-    fetch("http://127.0.0.1:5000/users?username=" + props.username)
-      .then((response) => response.json())
-      .then((data) => {
-        setEmail(data["email"]);
-        setAvatarUrl(data["avatar_url"]);
-        setDateCreated(data["created_on"]);
-      });
-  }, [props.username]);
+    Axios.get("/users/get?username=" + props.username).then((res) => {
+      setEmail(res.data["user"]["email"]);
+      setAvatarUrl(res.data["user"]["avatar_url"]);
+      setDateCreated(res.data["user"]["created_on"]);
+    });
+  }, []);
 
   return (
     <div className="avatar-container">

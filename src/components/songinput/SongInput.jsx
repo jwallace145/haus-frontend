@@ -3,6 +3,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import "./SongInput.css";
+import axios from "axios";
 
 export default function SongIntake(props) {
   const [title, setTitle] = useState("");
@@ -19,19 +20,9 @@ export default function SongIntake(props) {
     formData.append("album", album);
     formData.append("cover", cover);
 
-    const requestOptions = {
-      method: "POST",
-      body: formData,
-    };
-
-    fetch(
-      "http://127.0.0.1:5000/songs?username=" + props.username,
-      requestOptions
-    )
-      .then((response) => response.json())
-      .then((song) => {
-        console.log(song);
-      });
+    axios
+      .post("/songs/create?username=" + props.username, formData)
+      .then((res) => {});
 
     props.alertCallBack();
   }
