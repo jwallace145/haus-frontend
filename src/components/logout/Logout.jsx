@@ -2,22 +2,18 @@ import React from "react";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import { useHistory } from "react-router-dom";
+import axios from "axios";
 
 export default function Logout(props) {
   let history = useHistory();
 
   function handleClick() {
-    const requestOptions = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        username: props.username,
-      }),
-    };
+    let formData = new FormData();
+    formData.append("username", props.match.params.username);
 
-    fetch("http://127.0.0.1:5000/logout", requestOptions)
-      .then((response) => response.json())
-      .then((data) => console.log(data));
+    axios.post("/logout", formData).then((res) => {
+      console.log(res.data);
+    });
 
     history.push("/login");
   }

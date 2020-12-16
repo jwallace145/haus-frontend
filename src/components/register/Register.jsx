@@ -3,6 +3,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import { useHistory } from "react-router-dom";
+import axios from "axios";
 
 export default function Register(props) {
   const [username, setUsername] = useState("");
@@ -21,14 +22,7 @@ export default function Register(props) {
     formData.append("password", password);
     formData.append("avatar", avatar);
 
-    const requestOptions = {
-      method: "POST",
-      body: formData,
-    };
-
-    fetch("http://127.0.0.1:5000/users", requestOptions)
-      .then((response) => response.json())
-      .then((data) => console.log(data));
+    axios.post("/register", formData).then((res) => {});
 
     history.push("/home");
   }

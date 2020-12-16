@@ -3,6 +3,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import { useHistory } from "react-router-dom";
+import axios from "axios";
 
 export default function Login(props) {
   const [username, setUsername] = useState("");
@@ -11,18 +12,13 @@ export default function Login(props) {
   let history = useHistory();
 
   function handleClick(event) {
-    const requestOptions = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        username: username,
-        password: password,
-      }),
-    };
+    let formData = new FormData();
+    formData.append("username", username);
+    formData.append("password", password);
 
-    fetch("http://127.0.0.1:5000/login", requestOptions)
-      .then((response) => response.json())
-      .then((data) => console.log(data));
+    axios.post("/login", formData).then((res) => {
+      console.log(res.data);
+    });
 
     history.push("/home");
   }

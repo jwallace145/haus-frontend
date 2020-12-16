@@ -3,6 +3,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "./ProfileUpdate.css";
 import { useHistory } from "react-router-dom";
+import axios from "axios";
 
 export default function ProfileUpdate(props) {
   const [newUsername, setNewUsername] = useState("");
@@ -15,19 +16,13 @@ export default function ProfileUpdate(props) {
     event.preventDefault();
 
     let formData = new FormData();
-    formData.append("username", props.username);
-    formData.append("new_username", newUsername);
-    formData.append("new_email", newEmail);
-    formData.append("new_avatar", newAvatar);
+    formData.append("username", newUsername);
+    formData.append("email", newEmail);
+    formData.append("avatar", newAvatar);
 
-    const requestOptions = {
-      method: "PUT",
-      body: formData,
-    };
-
-    fetch("http://127.0.0.1:5000/users", requestOptions)
-      .then((response) => response.json())
-      .then((data) => console.log(data));
+    axios
+      .put("/users/edit?username=" + props.username, formData)
+      .then((res) => {});
 
     history.push("/profile/" + newUsername);
   }

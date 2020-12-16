@@ -6,6 +6,7 @@ import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
 import "./Home.css";
 import SongBook from "../songbook/SongBook";
+import axios from "axios";
 
 export default function Home(props) {
   const [key, setKey] = useState("recentlyLiked");
@@ -13,17 +14,13 @@ export default function Home(props) {
   const [mostLikedSongs, setMostLikedSongs] = useState([]);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:5000/songs")
-      .then((response) => response.json())
-      .then((songsList) => {
-        setRecentlyLikedSongs(songsList["songs"]);
-      });
+    axios.get("/songs/recent").then((res) => {
+      setRecentlyLikedSongs(res.data["songs"]);
+    });
 
-    fetch("http://127.0.0.1:5000/songs/most-liked")
-      .then((response) => response.json())
-      .then((songsList) => {
-        setMostLikedSongs(songsList["songs"]);
-      });
+    axios.get("/songs/liked").then((res) => {
+      setMostLikedSongs(res.data["songs"]);
+    });
   }, []);
 
   return (
