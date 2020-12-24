@@ -7,7 +7,6 @@ import Tab from "react-bootstrap/Tab";
 import "./Home.css";
 import SongBook from "../songbook/SongBook";
 import axios from "axios";
-import Spotify from "../spotify/Spotify";
 
 export default function Home(props) {
   const [key, setKey] = useState("recentlyLiked");

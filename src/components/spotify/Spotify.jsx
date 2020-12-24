@@ -3,6 +3,10 @@ import Button from "react-bootstrap/Button";
 import axios from "axios";
 import "./Spotify.css";
 import Form from "react-bootstrap/Form";
+import ListGroup from "react-bootstrap/esm/ListGroup";
+import Playlist from "../playlist/Playlist";
+import Container from "react-bootstrap/Container";
+import PlaylistBook from "../playlistbook/PlaylistBook";
 
 export default function Spotify(props) {
   const [playlistSearch, setPlaylistSearch] = useState("");
@@ -41,23 +45,14 @@ export default function Spotify(props) {
 
   return (
     <div className="spotify-container">
-      <Form>
-        <Form.Group>
-          <Form.Label>Spotify Playlist</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="playlists..."
-            onChange={(e) => setPlaylistSearch(e.target.value)}
-          />
-          <Form.Text>Search for your Spotify playlists</Form.Text>
-          <Button variant="dark" onClick={handleSearchPlaylist}>
-            Search
-          </Button>
-        </Form.Group>
-      </Form>
-      <Button variant="dark" onClick={handleSpotifyAuth}>
-        Authorize
-      </Button>
+      <Container>
+        <Button variant="dark" onClick={handleSpotifyAuth}>
+          Authorize
+        </Button>
+      </Container>
+      <Container>
+        <PlaylistBook playlists={playlists} pageSize={3} />
+      </Container>
     </div>
   );
 }

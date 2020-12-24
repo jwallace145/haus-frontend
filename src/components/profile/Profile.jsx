@@ -6,20 +6,16 @@ import Tabs from "react-bootstrap/Tabs";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import ProfileHeader from "../profileheader/ProfileHeader";
-import ProfileUpdate from "../profileupdate/ProfileUpdate";
 import "./Profile.css";
-import Button from "react-bootstrap/Button";
 import SongBook from "../songbook/SongBook";
 import Alert from "react-bootstrap/Alert";
 import axios from "axios";
-import Spotify from "../spotify/Spotify";
 import ProfileControlBar from "../profilecontrolbar/ProfileControlBar";
 
 export default function Profile(props) {
   const [username, setUsername] = useState("");
   const [songs, setSongs] = useState([]);
   const [key, setKey] = useState("liked-songs");
-  const [showProfileEdit, setShowProfileEdit] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
 
   useEffect(() => {
@@ -45,18 +41,6 @@ export default function Profile(props) {
 
   function showAlertCallBack() {
     setShowAlert(true);
-  }
-
-  let profileEdit;
-  if (!showProfileEdit) {
-    profileEdit = <div></div>;
-  } else if (showProfileEdit) {
-    profileEdit = (
-      <>
-        <hr></hr>
-        <ProfileUpdate username={username} />
-      </>
-    );
   }
 
   let alert;

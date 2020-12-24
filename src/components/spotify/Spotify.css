@@ -1,5 +1,36 @@
 .spotify-container {
+  padding: 15px;
+  margin: 15px;
+  background-color: rgb(200, 200, 200);
   border-radius: 10px;
-  background-color: rgb(120, 120, 120);
+  
+}
+
+.spotify-authorize-container {
   padding: 10px;
+  border-radius: 10px;
+  background-color: rgb(200, 200, 200);
+}
+
+.spotify-playlists-container {
+}
+
+.spotify-playlists-scrollable {
+  border-radius: 10px;
+  background-color: rgb(200, 200, 200);
+  overflow: scroll;
+  height: 250px;
+  padding: 10px;
+}
+
+.spotify-playlist-item {
+  border-radius: 10px;
+}
+
+.spotify-playlists-list {
+  margin: 10px;
+}
+
+li {
+  margin: 3px;
 }
