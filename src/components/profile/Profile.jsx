@@ -6,25 +6,30 @@ import Tabs from "react-bootstrap/Tabs";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import ProfileHeader from "../profileheader/ProfileHeader";
-import ProfileUpdate from "../profileupdate/ProfileUpdate";
 import "./Profile.css";
-import Button from "react-bootstrap/Button";
 import SongBook from "../songbook/SongBook";
 import Alert from "react-bootstrap/Alert";
 import axios from "axios";
+import ProfileControlBar from "../profilecontrolbar/ProfileControlBar";
 
 export default function Profile(props) {
-  const [username, setUsername] = useState(props.match.params.username);
+  const [username, setUsername] = useState("");
   const [songs, setSongs] = useState([]);
   const [key, setKey] = useState("liked-songs");
-  const [showProfileEdit, setShowProfileEdit] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
 
   useEffect(() => {
-    axios.get("/songs/liked-by?username=" + username).then((res) => {
-      setSongs(res.data["songs"]);
+    axios.get("/users/current", { withCredentials: true }).then((res) => {
+      console.log("current user");
+      console.log(res.data["user"]);
+      setUsername(res.data["user"]["username"]);
     });
-  }, [username]);
+
+    axios.get("/users/tracks", { withCredentials: true }).then((res) => {
+      console.log(res.data["tracks"]);
+      setSongs(res.data["tracks"]);
+    });
+  }, []);
 
   function handleSelect(event) {
     setKey(event);
@@ -36,18 +41,6 @@ export default function Profile(props) {
 
   function showAlertCallBack() {
     setShowAlert(true);
-  }
-
-  let profileEdit;
-  if (!showProfileEdit) {
-    profileEdit = <div></div>;
-  } else if (showProfileEdit) {
-    profileEdit = (
-      <>
-        <hr></hr>
-        <ProfileUpdate username={username} />
-      </>
-    );
   }
 
   let alert;
@@ -70,18 +63,10 @@ export default function Profile(props) {
     <>
       {alert}
       <Container>
-        <ProfileHeader username={username} />
+        <ProfileHeader />
       </Container>
       <Container>
-        <div className="profile-edit-container">
-          <Button
-            variant="dark"
-            onClick={(event) => setShowProfileEdit(!showProfileEdit)}
-          >
-            Edit Profile
-          </Button>
-          {profileEdit}
-        </div>
+        <ProfileControlBar />
       </Container>
       <Container>
         <Tabs activeKey={key} onSelect={handleSelect}>

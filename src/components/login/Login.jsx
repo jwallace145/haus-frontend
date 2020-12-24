@@ -16,8 +16,8 @@ export default function Login(props) {
     formData.append("username", username);
     formData.append("password", password);
 
-    axios.post("/login", formData).then((res) => {
-      console.log(res.data);
+    axios.post("/login", formData, { withCredentials: true }).then((res) => {
+      console.log(res);
     });
 
     history.push("/home");
