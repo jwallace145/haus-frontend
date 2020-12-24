@@ -2,11 +2,7 @@ import React, { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
 import "./Spotify.css";
-import Form from "react-bootstrap/Form";
-import ListGroup from "react-bootstrap/esm/ListGroup";
-import Playlist from "../playlist/Playlist";
 import Container from "react-bootstrap/Container";
-import PlaylistBook from "../playlistbook/PlaylistBook";
 
 export default function Spotify(props) {
   const [playlistSearch, setPlaylistSearch] = useState("");
@@ -14,6 +10,7 @@ export default function Spotify(props) {
 
   useEffect(() => {
     axios.get("/spotify/playlists", { withCredentials: true }).then((res) => {
+      console.log("playlists from /spotify/playlists endpoint");
       console.log(res.data["playlists"]);
       setPlaylists(res.data["playlists"]);
     });
@@ -49,9 +46,6 @@ export default function Spotify(props) {
         <Button variant="dark" onClick={handleSpotifyAuth}>
           Authorize
         </Button>
-      </Container>
-      <Container>
-        <PlaylistBook playlists={playlists} pageSize={3} />
       </Container>
     </div>
   );

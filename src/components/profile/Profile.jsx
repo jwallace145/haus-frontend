@@ -11,12 +11,14 @@ import SongBook from "../songbook/SongBook";
 import Alert from "react-bootstrap/Alert";
 import axios from "axios";
 import ProfileControlBar from "../profilecontrolbar/ProfileControlBar";
+import PlaylistSwiper from "../playlistswiper/PlaylistSwiper";
 
 export default function Profile(props) {
   const [username, setUsername] = useState("");
   const [songs, setSongs] = useState([]);
   const [key, setKey] = useState("liked-songs");
   const [showAlert, setShowAlert] = useState(false);
+  const [playlists, setPlaylists] = useState([]);
 
   useEffect(() => {
     axios.get("/users/current", { withCredentials: true }).then((res) => {
@@ -28,6 +30,12 @@ export default function Profile(props) {
     axios.get("/users/tracks", { withCredentials: true }).then((res) => {
       console.log(res.data["tracks"]);
       setSongs(res.data["tracks"]);
+    });
+
+    axios.get("/spotify/playlists", { withCredentials: true }).then((res) => {
+      console.log("spotify playlists from profiel");
+      console.log(res.data["playlists"]);
+      setPlaylists(res.data["playlists"]);
     });
   }, []);
 
@@ -67,6 +75,9 @@ export default function Profile(props) {
       </Container>
       <Container>
         <ProfileControlBar />
+      </Container>
+      <Container>
+        <PlaylistSwiper playlists={playlists} />
       </Container>
       <Container>
         <Tabs activeKey={key} onSelect={handleSelect}>
