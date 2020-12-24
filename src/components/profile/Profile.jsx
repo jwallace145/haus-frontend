@@ -13,6 +13,7 @@ import SongBook from "../songbook/SongBook";
 import Alert from "react-bootstrap/Alert";
 import axios from "axios";
 import Spotify from "../spotify/Spotify";
+import ProfileControlBar from "../profilecontrolbar/ProfileControlBar";
 
 export default function Profile(props) {
   const [username, setUsername] = useState("");
@@ -78,19 +79,10 @@ export default function Profile(props) {
     <>
       {alert}
       <Container>
-        <ProfileHeader username={username} />
+        <ProfileHeader />
       </Container>
       <Container>
-        <div className="profile-edit-container">
-          <Button
-            variant="dark"
-            onClick={(event) => setShowProfileEdit(!showProfileEdit)}
-          >
-            Edit Profile
-          </Button>
-          <Spotify />
-          {profileEdit}
-        </div>
+        <ProfileControlBar />
       </Container>
       <Container>
         <Tabs activeKey={key} onSelect={handleSelect}>
