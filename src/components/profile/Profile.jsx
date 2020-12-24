@@ -12,19 +12,27 @@ import Button from "react-bootstrap/Button";
 import SongBook from "../songbook/SongBook";
 import Alert from "react-bootstrap/Alert";
 import axios from "axios";
+import Spotify from "../spotify/Spotify";
 
 export default function Profile(props) {
-  const [username, setUsername] = useState(props.match.params.username);
+  const [username, setUsername] = useState("");
   const [songs, setSongs] = useState([]);
   const [key, setKey] = useState("liked-songs");
   const [showProfileEdit, setShowProfileEdit] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
 
   useEffect(() => {
-    axios.get("/songs/liked-by?username=" + username).then((res) => {
-      setSongs(res.data["songs"]);
+    axios.get("/users/current", { withCredentials: true }).then((res) => {
+      console.log("current user");
+      console.log(res.data["user"]);
+      setUsername(res.data["user"]["username"]);
     });
-  }, [username]);
+
+    axios.get("/users/tracks", { withCredentials: true }).then((res) => {
+      console.log(res.data["tracks"]);
+      setSongs(res.data["tracks"]);
+    });
+  }, []);
 
   function handleSelect(event) {
     setKey(event);
@@ -80,6 +88,7 @@ export default function Profile(props) {
           >
             Edit Profile
           </Button>
+          <Spotify />
           {profileEdit}
         </div>
       </Container>

@@ -8,10 +8,7 @@ export default function Logout(props) {
   let history = useHistory();
 
   function handleClick() {
-    let formData = new FormData();
-    formData.append("username", props.match.params.username);
-
-    axios.post("/logout", formData).then((res) => {
+    axios.get("/logout", { withCredentials: true }).then((res) => {
       console.log(res.data);
     });
 

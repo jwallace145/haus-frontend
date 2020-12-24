@@ -3,8 +3,18 @@ import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Song.css";
+import Button from "react-bootstrap/Button";
+import axios from "axios";
 
 export default function Song(props) {
+  function handleClick(event) {
+    event.preventDefault();
+
+    axios
+      .delete("/songs/delete?song_id=" + props.id)
+      .then((res) => console.log(res));
+  }
+
   return (
     <Card bg="light" className="song-card">
       <Card.Header>
@@ -23,6 +33,9 @@ export default function Song(props) {
             Created On: {props.created_on}
           </ListGroup.Item>
         </ListGroup>
+        <Button variant="info" onClick={handleClick}>
+          Delete
+        </Button>
       </Card.Body>
     </Card>
   );

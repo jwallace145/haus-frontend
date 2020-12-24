@@ -12,26 +12,18 @@ import { Component } from "react";
 import Search from "./components/search/Search";
 
 export default class App extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      username: "bob"
-    }
-  }
-
   render() {
     return (
       <Router>
-        <Header username={this.state.username} />
+        <Header />
         <Switch>
           <Route path='/songintake' component={SongInput} />
           <Route path='/login' component={Login} />
-          <Route path='/profile/:username' component={Profile} />
+          <Route path='/profile' component={Profile} />
           <Route path='/home' component={Home} />
           <Route path='/about' component={About} />
           <Route path="/register" component={Register} />
-          <Route path='/logout/:username' component={Logout} />
+          <Route path='/logout' component={Logout} />
           <Route path='/search' component={Search} />
         </Switch>
       </Router>

@@ -7,6 +7,7 @@ import Tab from "react-bootstrap/Tab";
 import "./Home.css";
 import SongBook from "../songbook/SongBook";
 import axios from "axios";
+import Spotify from "../spotify/Spotify";
 
 export default function Home(props) {
   const [key, setKey] = useState("recentlyLiked");
@@ -14,12 +15,14 @@ export default function Home(props) {
   const [mostLikedSongs, setMostLikedSongs] = useState([]);
 
   useEffect(() => {
-    axios.get("/songs/recent").then((res) => {
-      setRecentlyLikedSongs(res.data["songs"]);
+    axios.get("/tracks/all").then((res) => {
+      console.log(res.data["tracks"]);
+      setRecentlyLikedSongs(res.data["tracks"]);
     });
 
-    axios.get("/songs/liked").then((res) => {
-      setMostLikedSongs(res.data["songs"]);
+    axios.get("/tracks/all").then((res) => {
+      console.log(res.data["tracks"]);
+      setMostLikedSongs(res.data["tracks"]);
     });
   }, []);
 
