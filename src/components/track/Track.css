@@ -6,3 +6,11 @@
   flex-direction: column;
   margin: auto;
 }
+
+.track-title-container {
+  background-color: rgb(200, 200, 200);
+  text-align: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  font-weight: bold;
+}

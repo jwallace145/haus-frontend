@@ -6,6 +6,7 @@ import "./Track.css";
 export default function Track(props) {
   return (
     <div className="track-container">
+      <div className="track-title-container">{props.track.title}</div>
       <div
         style={{
           backgroundImage: `url(${props.track.cover_url})`,
@@ -16,7 +17,7 @@ export default function Track(props) {
           backgroundSize: "cover",
           borderRadius: 10,
           margin: "auto",
-          marginTop: 3,
+          marginTop: 10,
         }}
       ></div>
       <div style={{ margin: "auto" }}>
