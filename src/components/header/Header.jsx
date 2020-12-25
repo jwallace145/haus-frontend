@@ -5,7 +5,6 @@ import Nav from "react-bootstrap/Nav";
 import axios from "axios";
 
 export default function Header(props) {
-  const [search, setSearch] = useState("");
   const [user, setUser] = useState();
 
   useEffect(() => {
@@ -16,7 +15,9 @@ export default function Header(props) {
 
   return (
     <Navbar bg="dark" variant="dark">
-      <Navbar.Brand href="/home"> HAUS </Navbar.Brand>
+      <Navbar.Brand href="/home">
+        HAUS <i className="fas fa-headphones-alt"></i>
+      </Navbar.Brand>
       <Nav className="mr-auto">
         <Nav.Link href="/about">About</Nav.Link>
         <Nav.Link href={"/profile"}>Profile</Nav.Link>

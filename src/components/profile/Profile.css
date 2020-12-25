@@ -1,0 +1,15 @@
+.playlist-swiper-title-container {
+  background-color: rgb(200, 200, 200);
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.track-swiper-title-container {
+  background-color: rgb(200, 200, 200);
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}

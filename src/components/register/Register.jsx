@@ -22,7 +22,9 @@ export default function Register(props) {
     formData.append("password", password);
     formData.append("avatar", avatar);
 
-    axios.post("/register", formData).then((res) => {});
+    axios
+      .post("/register", formData, { withCredentials: true })
+      .then((res) => {});
 
     history.push("/home");
   }

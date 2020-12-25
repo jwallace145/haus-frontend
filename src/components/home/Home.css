@@ -1,0 +1,17 @@
+.home-playlist-swiper-title {
+  background-color: rgb(200, 200, 200);
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.home-playlist-swiper-container {
+  background-color: rgb(200, 200, 200);
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: bold;
+  margin: auto;
+  margin-bottom: 10px;
+}

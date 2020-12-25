@@ -20,11 +20,9 @@ export default function ProfileUpdate(props) {
     formData.append("email", newEmail);
     formData.append("avatar", newAvatar);
 
-    axios
-      .put("/users/edit?username=" + props.username, formData)
-      .then((res) => {});
+    axios.put("/users/edit", formData).then((res) => {});
 
-    history.push("/profile/" + newUsername);
+    history.push("/profile");
   }
 
   return (

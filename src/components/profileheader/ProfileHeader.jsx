@@ -1,5 +1,4 @@
-import Axios from "axios";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./ProfileHeader.css";
 
 export default function ProfileHeader(props) {
