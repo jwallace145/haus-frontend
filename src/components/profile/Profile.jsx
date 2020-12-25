@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import ProfileHeader from "../profileheader/ProfileHeader";
-import "./Profile.css";
 import axios from "axios";
 import ProfileControlBar from "../profilecontrolbar/ProfileControlBar";
 import PlaylistSwiper from "../playlistswiper/PlaylistSwiper";
@@ -14,7 +13,6 @@ export default function Profile(props) {
 
   useEffect(() => {
     axios.get("/users/current", { withCredentials: true }).then((res) => {
-      console.log(res.data["user"]);
       setUser(res.data["user"]);
     });
 

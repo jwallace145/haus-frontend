@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Container from "react-bootstrap/Container";
-import "./Home.css";
 import axios from "axios";
 import TrackSwiper from "../trackswiper/TrackSwiper";
 

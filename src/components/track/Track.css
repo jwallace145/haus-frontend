@@ -1,0 +1,8 @@
+.track-container {
+  background-color: rgb(50, 50, 50);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: auto;
+}

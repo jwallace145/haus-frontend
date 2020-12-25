@@ -23,7 +23,7 @@ export default function TrackSwiper(props) {
   return (
     <Swiper {...params} rebuildOnUpdate={true}>
       {props.tracks.map((track, index) => (
-        <div key={index} style={{ width: 200, height: 200 }}>
+        <div key={index}>
           <Track track={track} />
         </div>
       ))}
