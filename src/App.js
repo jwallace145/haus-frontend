@@ -1,7 +1,6 @@
 import Header from "./components/header/Header";
 import Login from "./components/login/Login";
 import Register from "./components/register/Register";
-import SongInput from "./components/songinput/SongInput";
 import Profile from "./components/profile/Profile";
 import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Home from "./components/home/Home";
@@ -17,7 +16,6 @@ export default class App extends Component {
       <Router>
         <Header />
         <Switch>
-          <Route path='/songintake' component={SongInput} />
           <Route path='/login' component={Login} />
           <Route path='/profile' component={Profile} />
           <Route path='/home' component={Home} />

@@ -1,12 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
+import axios from "axios";
 
 export default function Header(props) {
   const [search, setSearch] = useState("");
+  const [user, setUser] = useState();
+
+  useEffect(() => {
+    axios.get("/users/current", { withCredentials: true }).then((res) => {
+      setUser(res.data["user"]);
+    });
+  }, []);
 
   return (
     <Navbar bg="dark" variant="dark">
@@ -19,27 +25,6 @@ export default function Header(props) {
         <Nav.Link href={"/logout/" + props.username}>Logout</Nav.Link>
         <Nav.Link href="/search">Search</Nav.Link>
       </Nav>
-      <Form inline>
-        <Form.Group controlId="query">
-          <Form.Control
-            type="text"
-            placeholder="Song Search"
-            className="mr-sm-2"
-            onChange={(event) => {
-              setSearch(event.target.value);
-            }}
-          />
-        </Form.Group>
-        <Button
-          variant="outline-light"
-          onClick={(event) => {
-            event.preventDefault();
-            console.log(search);
-          }}
-        >
-          Search
-        </Button>
-      </Form>
     </Navbar>
   );
 }

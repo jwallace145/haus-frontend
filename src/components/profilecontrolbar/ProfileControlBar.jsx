@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./ProfileControlBar.css";
 import Button from "react-bootstrap/Button";
 import ProfileUpdate from "../profileupdate/ProfileUpdate";
@@ -10,12 +10,12 @@ export default function ProfileControlBar(props) {
 
   function handleEditProfile(event) {
     event.preventDefault();
-    setDisplay(display != "edit" ? "edit" : "none");
+    setDisplay(display !== "edit" ? "edit" : "none");
   }
 
   function handleSpotify(event) {
     event.preventDefault();
-    setDisplay(display != "spotify" ? "spotify" : "none");
+    setDisplay(display !== "spotify" ? "spotify" : "none");
   }
 
   let page;
