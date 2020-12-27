@@ -2,45 +2,19 @@ import React from "react";
 import { useState, useEffect } from "react";
 import "./Navbar.css";
 import axios from "axios";
+import { AuthenticatedItems } from "./AuthenticatedItems";
+import { UnauthenticatedItems } from "./UnauthenticatedItems";
 
 export default function Navbar(props) {
-  const [user, setUser] = useState(null);
   const [click, setClick] = useState(false);
-
-  const authenticatedItems = [
-    {
-      title: "Home",
-      href: "/home",
-    },
-    {
-      title: "Profile",
-      href: "/profile",
-    },
-    {
-      title: "Logout",
-      href: "/logout",
-    },
-  ];
-
-  const unauthenticatedItems = [
-    {
-      title: "Home",
-      href: "/home",
-    },
-    {
-      title: "Register",
-      href: "/register",
-    },
-    {
-      title: "Login",
-      href: "/login",
-    },
-  ];
+  const [items, setItems] = useState([]);
 
   useEffect(() => {
     axios.get("/users/current", { withCredentials: true }).then((res) => {
       if (res.data["exists"]) {
-        setUser(res.data["user"]);
+        setItems(AuthenticatedItems);
+      } else {
+        setItems(UnauthenticatedItems);
       }
     });
   }, []);
@@ -59,26 +33,15 @@ export default function Navbar(props) {
         <i className={click ? "fas fa-times" : "fas fa-bars"}></i>
       </div>
       <ul className={click ? "nav-menu active" : "nav-menu"}>
-        {user &&
-          authenticatedItems.map((item, index) => {
-            return (
-              <li>
-                <a className="nav-link" href={item.href}>
-                  {item.title}
-                </a>
-              </li>
-            );
-          })}
-        {!user &&
-          unauthenticatedItems.map((item, index) => {
-            return (
-              <li>
-                <a className="nav-link" href={item.href}>
-                  {item.title}
-                </a>
-              </li>
-            );
-          })}
+        {items.map((item) => {
+          return (
+            <li>
+              <a className="nav-link" href={item.href}>
+                {item.title}
+              </a>
+            </li>
+          );
+        })}
       </ul>
     </nav>
   );
