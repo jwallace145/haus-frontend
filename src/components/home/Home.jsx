@@ -14,6 +14,7 @@ export default function Home(props) {
     axios.get("/playlists/all").then((res) => {
       setPlaylists(res.data["playlists"]);
     });
+
     axios.get("/tracks/all").then((res) => {
       setTracks(res.data["tracks"]);
     });

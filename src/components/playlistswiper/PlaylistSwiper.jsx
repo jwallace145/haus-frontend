@@ -10,35 +10,36 @@ export default function PlaylistSwiper(props) {
   };
 
   const params = {
-    effect: "coverflow",
-    grabCursor: true,
-    slidesPerView: "auto",
-    coverflowEffect: {
-      rotate: 50,
-      stretch: 0,
-      depth: 100,
-      modifier: 1,
-      slideShadows: true,
-    },
+    slidesPerView: 4,
+    spaceBetween: 30,
+    slidesPerGroup: 4,
+    loop: true,
+    loopFillGroupWithBlank: true,
     pagination: {
       el: ".swiper-pagination",
       clickable: true,
+      dynamicBullets: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
     },
   };
 
   return (
     <div>
-      <Swiper {...params} rebuildOnUpdate={true}>
-        {props.playlists.map((playlist, index) => (
-          <div key={index} style={{ width: 200, height: 200 }}>
-            <Playlist
-              playlist_id={playlist.spotify_id}
-              name={playlist.name}
-              cover_url={playlist.cover_url}
-              notify={notify}
-            />
-          </div>
-        ))}
+      <Swiper {...params} rebuildOnUpdate={true} shouldSwiperUpdate={true}>
+        {props.playlists &&
+          props.playlists.map((playlist, index) => (
+            <div key={index} style={{ width: 200, height: 200 }}>
+              <Playlist
+                playlist_id={playlist.spotify_id}
+                name={playlist.name}
+                cover_url={playlist.cover_url}
+                notify={notify}
+              />
+            </div>
+          ))}
       </Swiper>
       <ToastContainer />
     </div>

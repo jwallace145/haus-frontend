@@ -1,4 +1,5 @@
 import Header from "./components/header/Header";
+import Navbar from "./components/navbar/Navbar"
 import Login from "./components/login/Login";
 import Register from "./components/register/Register";
 import Profile from "./components/profile/Profile";
@@ -10,21 +11,20 @@ import "./App.css";
 import { Component } from "react";
 import Search from "./components/search/Search";
 
-export default class App extends Component {
-  render() {
-    return (
-      <Router>
-        <Header />
-        <Switch>
-          <Route path='/login' component={Login} />
-          <Route path='/profile' component={Profile} />
-          <Route path='/home' component={Home} />
-          <Route path='/about' component={About} />
-          <Route path="/register" component={Register} />
-          <Route path='/logout' component={Logout} />
-          <Route path='/search' component={Search} />
-        </Switch>
-      </Router>
-    );
-  }
+export default function App() {
+  return (
+    <Router>
+      {/* <Header /> */}
+      <Navbar />
+      <Switch>
+        <Route path='/login' component={Login} />
+        <Route path='/profile' component={Profile} />
+        <Route path='/home' component={Home} />
+        <Route path='/about' component={About} />
+        <Route path="/register" component={Register} />
+        <Route path='/logout' component={Logout} />
+        <Route path='/search' component={Search} />
+      </Switch>
+    </Router>
+  );
 }
