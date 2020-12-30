@@ -1,17 +1,22 @@
 import React, { useState } from "react";
-import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
-import { useHistory } from "react-router-dom";
+import Modal from "react-bootstrap/Modal";
+import Form from "react-bootstrap/Form";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function Login(props) {
+  const [show, setShow] = useState(true);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   let history = useHistory();
 
-  function handleClick(event) {
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(false);
+
+  const handleLogin = () => {
     let formData = new FormData();
     formData.append("username", username);
     formData.append("password", password);
@@ -20,14 +25,14 @@ export default function Login(props) {
       console.log(res);
       history.push("/home");
     });
-  }
+  };
 
   return (
-    <>
-      <Container>
-        <h1>Login</h1>
-      </Container>
-      <Container>
+    <Modal show={show} onHide={handleShow}>
+      <Modal.Header closeButton>
+        <Modal.Title>Login</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
         <Form>
           <Form.Group controlId="username">
             <Form.Label>Username</Form.Label>
@@ -49,11 +54,13 @@ export default function Login(props) {
               }}
             />
           </Form.Group>
-          <Button variant="dark" onClick={handleClick}>
-            Submit
-          </Button>
         </Form>
-      </Container>
-    </>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant="dark" onClick={handleLogin}>
+          Login
+        </Button>
+      </Modal.Footer>
+    </Modal>
   );
 }

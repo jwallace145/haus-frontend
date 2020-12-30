@@ -14,9 +14,13 @@ export default function PlaylistIngest(props) {
     axios.get("/users/playlists", { withCredentials: true }).then((res) => {
       setPlaylists(res.data["playlists"]);
       setCurrentPlaylist(res.data["playlists"][0]);
-
+      console.log(res.data["playlists"]);
       axios
-        .get("/playlists/" + res.data["playlists"][0]["id"] + "/tracks")
+        .get(
+          "/playlists/" + res.data["playlists"].length > 0
+            ? res.data["playlists"][0]["id"]
+            : "" + "/tracks"
+        )
         .then((res) => {
           setTracks(res.data["tracks"]);
         });
@@ -48,7 +52,9 @@ export default function PlaylistIngest(props) {
           playlistCallback={playlistSwiperCallback}
         />
       </div>
-      <div className="current-playlist-container">{currentPlaylist.name}</div>
+      <div className="current-playlist-container">
+        {currentPlaylist && currentPlaylist.name}
+      </div>
       <div className="track-swiper-container">
         <TrackSwiper tracks={tracks} />
       </div>
