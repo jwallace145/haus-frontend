@@ -33,10 +33,11 @@ export default function PlaylistSwiper(props) {
           props.playlists.map((playlist, index) => (
             <div key={index} style={{ width: 200, height: 200 }}>
               <Playlist
-                playlist_id={playlist.spotify_id}
+                playlist_id={playlist.id}
                 name={playlist.name}
                 cover_url={playlist.cover_url}
                 notify={notify}
+                callback={props.playlistCallback}
               />
             </div>
           ))}

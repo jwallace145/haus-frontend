@@ -18,9 +18,8 @@ export default function Login(props) {
 
     axios.post("/login", formData, { withCredentials: true }).then((res) => {
       console.log(res);
+      history.push("/home");
     });
-
-    history.push("/home");
   }
 
   return (

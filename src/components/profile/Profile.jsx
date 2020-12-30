@@ -5,6 +5,7 @@ import axios from "axios";
 import ProfileControlBar from "../profilecontrolbar/ProfileControlBar";
 import PlaylistSwiper from "../playlistswiper/PlaylistSwiper";
 import TrackSwiper from "../trackswiper/TrackSwiper";
+import PlaylistIngest from "../playlistingest/PlaylistIngest";
 import "./Profile.css";
 
 export default function Profile(props) {
@@ -36,6 +37,9 @@ export default function Profile(props) {
         <ProfileControlBar user={user} />
       </Container>
       <Container>
+        <PlaylistIngest />
+      </Container>
+      <Container>
         <div className="playlist-swiper-title-container">
           <h5>
             <i class="fab fa-spotify"></i> Spotify Playlists
@@ -57,7 +61,7 @@ export default function Profile(props) {
             music. Update your track ratings to fine tune the performance!
           </p>
         </div>
-        <TrackSwiper tracks={tracks} />
+        <TrackSwiper tracks={tracks} showTrackRating={true} />
       </Container>
     </>
   );

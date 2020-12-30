@@ -1,0 +1,25 @@
+.playlist-ingest-container {
+  background-color: rgb(50, 50, 50);
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+  justify-content: center;
+}
+
+.playlist-swiper-container {
+  padding: 10px;
+}
+
+.track-swiper-container {
+  padding: 10px;
+}
+
+.current-playlist-container {
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: auto;
+  color: rgb(220, 220, 220);
+  padding: 10px;
+  text-align: center;
+}

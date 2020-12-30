@@ -4,7 +4,7 @@ import Swiper from "react-id-swiper";
 
 export default function TrackSwiper(props) {
   const params = {
-    slidesPerView: 6,
+    slidesPerView: 4,
     spaceBetween: 30,
     slidesPerGroup: 4,
     loop: true,
@@ -24,7 +24,7 @@ export default function TrackSwiper(props) {
     <Swiper {...params} rebuildOnUpdate={true} shouldSwiperUpdate={true}>
       {props.tracks.map((track, index) => (
         <div key={index}>
-          <Track track={track} />
+          <Track track={track} showRating={props.showTrackRating} />
         </div>
       ))}
     </Swiper>

@@ -37,11 +37,13 @@ export default function Track(props) {
         }}
       ></div>
       <div style={{ margin: "auto" }}>
-        <Rating
-          name={String(props.track.id)}
-          value={rating}
-          onChange={handleRateTrack}
-        />
+        {props.showRating && (
+          <Rating
+            name={String(props.track.id)}
+            value={rating}
+            onChange={handleRateTrack}
+          />
+        )}
       </div>
     </div>
   );
